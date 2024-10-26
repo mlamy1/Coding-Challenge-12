@@ -29,7 +29,7 @@ canvas.addEventListener('mouseout', () => {
 // Task 3: Implement Shape Drawing Logic
 function drawShape(x, y) { // Used to add shape selection and color input (Task 4)
     const shape = document.querySelector('input[name="shape"]:checked').value; 
-    const color = document.getElementById('colorPicker').value; // Task 4
+    const color = document.getElementById('colorPicker').value; // Task 4 Add Color
     ctx.strokeStyle = color; // Set stroke color
 
     ctx.beginPath(); //Drawing path 
@@ -47,3 +47,8 @@ function drawShape(x, y) { // Used to add shape selection and color input (Task 
         ctx.stroke();
     }
 }
+
+// Task 4: Canvas Clearing 
+document.getElementById('clearCanvas').addEventListener('click', () => { // Used to activate clear canvas button
+    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+});
