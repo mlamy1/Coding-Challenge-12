@@ -25,3 +25,25 @@ canvas.addEventListener('mouseup', () => {
 canvas.addEventListener('mouseout', () => {
     drawing = false;
 });
+
+// Task 3: Implement Shape Drawing Logic
+function drawShape(x, y) { // Used to add shape selection and color input (Task 4)
+    const shape = document.querySelector('input[name="shape"]:checked').value; 
+    const color = document.getElementById('colorPicker').value; // Task 4
+    ctx.strokeStyle = color; // Set stroke color
+
+    ctx.beginPath(); //Drawing path 
+
+    if (shape === 'line') { // draw a line if line shape is selected 
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+    } else if (shape === 'rectangle') { // draw a rectangle if rectangle shape is selected
+        ctx.rect(startX, startY, x - startX, y - startY);
+        ctx.stroke();
+    } else if (shape === 'circle') { // draw a circle if circle shape is selected 
+        const radius = Math.sqrt(Math.pow(x - startX, 2) + Math.pow(y - startY, 2));
+        ctx.arc(startX, startY, radius, 0, Math.PI * 2);
+        ctx.stroke();
+    }
+}
